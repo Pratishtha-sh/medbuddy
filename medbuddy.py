@@ -24,6 +24,20 @@ def get_vectorstore():
 def set_custom_prompt(template):
     return PromptTemplate(template=template, input_variables=["context", "question"])
 
+CUSTOM_PROMPT_TEMPLATE = """
+You are a helpful medical assistant. Use only the information provided in the context to answer the user's question clearly, factually, and in 4–6 informative bullet points.
+
+        If the answer is not found in the context, say: "The context does not contain enough information to answer this question."
+
+        <context>
+        {context}
+        </context>
+
+        Question: {question}
+
+        Answer:
+"""
+
 # Loading HuggingFace model
 def load_chat_llm(repo_id):
     base_llm = HuggingFaceEndpoint(
@@ -56,21 +70,6 @@ def main():
         
         st.chat_message("user").markdown(f"👤 **You:** {prompt}")
         st.session_state.messages.append({'role': 'user', 'content': f"👤 **You:** {prompt}"})
-
-        
-        CUSTOM_PROMPT_TEMPLATE = """
-        You are a helpful medical assistant. Use only the information provided in the context to answer the user's question clearly, factually, and in 4–6 informative bullet points.
-
-        If the answer is not found in the context, say: "The context does not contain enough information to answer this question."
-
-        <context>
-        {context}
-        </context>
-
-        Question: {question}
-
-        Answer:
-        """
 
         HUGGINGFACE_REPO_ID = "mistralai/Mistral-7B-Instruct-v0.3"
 
