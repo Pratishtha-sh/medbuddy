@@ -43,12 +43,12 @@ cd medbuddy
 pip install streamlit langchain huggingface_hub faiss-cpu python-dotenv
 ```
 
-### Create a .env file
+### 3.Create a .env file
 ```bash
 HF_TOKEN=your_huggingface_api_token
 ```
 
-###Running the Chatbot
+### 4.Running the Chatbot
 ```bash
 streamlit run medbuddy.py
 ```
