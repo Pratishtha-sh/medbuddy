@@ -8,7 +8,6 @@ from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 
-# Load env
 load_dotenv()
 HF_TOKEN = os.environ.get("HF_TOKEN")
 
@@ -21,11 +20,11 @@ def get_vectorstore():
     db = FAISS.load_local(DB_FAISS_PATH, embedding_model, allow_dangerous_deserialization=True)
     return db
 
-# Set up custom prompt
+# Setting up custom prompt
 def set_custom_prompt(template):
     return PromptTemplate(template=template, input_variables=["context", "question"])
 
-# Load HuggingFace model
+# Loading HuggingFace model
 def load_chat_llm(repo_id):
     base_llm = HuggingFaceEndpoint(
         repo_id=repo_id,
