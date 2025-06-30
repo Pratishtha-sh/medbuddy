@@ -37,14 +37,21 @@
 ```bash
 git clone https://github.com/Pratishtha-sh/medbuddy.git
 cd medbuddy
+```
 ### 2.Install Dependencied
+```bash
 pip install streamlit langchain huggingface_hub faiss-cpu python-dotenv
+```
 
 ### Create a .env file
+```bash
 HF_TOKEN=your_huggingface_api_token
+```
 
 ###Running the Chatbot
+```bash
 streamlit run medbuddy.py
+```
 
 ### Example Queries
 What are the symptoms of diabetes?
