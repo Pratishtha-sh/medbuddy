@@ -53,11 +53,11 @@ def main():
     prompt = st.chat_input("Type your medical question here...")
 
     if prompt:
-        # Show user message
+        
         st.chat_message("user").markdown(f"👤 **You:** {prompt}")
         st.session_state.messages.append({'role': 'user', 'content': f"👤 **You:** {prompt}"})
 
-        # Prompt template
+        
         CUSTOM_PROMPT_TEMPLATE = """
         You are a helpful medical assistant. Use only the information provided in the context to answer the user's question clearly, factually, and in 4–6 informative bullet points.
 
@@ -87,12 +87,12 @@ def main():
                 chain_type_kwargs={'prompt': set_custom_prompt(CUSTOM_PROMPT_TEMPLATE)}
             )
 
-            # Run query
+         
             response = qa_chain.invoke({"query": prompt})
             result = clean_response(response["result"])
             sources = response["source_documents"]
 
-            # Display assistant response
+            # Displaying assistant response
             with st.chat_message("assistant"):
                 st.markdown(f"🤖 **MedBuddy:**\n\n{result}")
 
